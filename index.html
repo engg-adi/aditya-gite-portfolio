@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body><div class="scroll-progress" id="scrollProgress"></div>
   <div class="bg-grid"></div>
   <header class="navbar">
     <a class="brand" href="#home">AG<span>.</span></a>
@@ -24,7 +24,7 @@
       <a href="#education">Education</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a class="nav-resume" href="Aditya_Gite_Resume.pdf" target="_blank">Resume ↗</a>
+    <div class="nav-actions"><button class="theme-btn" id="themeToggle" aria-label="Toggle theme">☼</button><a class="nav-resume" href="Aditya_Gite_Resume.pdf" target="_blank">Resume ↗</a></div>
   </header>
 
   <main>
@@ -32,7 +32,7 @@
       <div class="hero-copy reveal">
         <div class="eyebrow"><span class="pulse"></span> AVAILABLE FOR OPPORTUNITIES</div>
         <h1>Hi, I'm <span>Aditya Gite</span></h1>
-        <h2>AI & Data Science Student</h2>
+        <h2><span class="typing" id="typingText"></span><span class="cursor">|</span></h2>
         <p>Fourth-year B.Tech student passionate about Artificial Intelligence, Data Science, Machine Learning and practical problem solving.</p>
         <div class="hero-actions">
           <a class="btn primary" href="#projects">Explore My Work</a>
@@ -41,6 +41,10 @@
         <div class="quick-links">
           <a href="mailto:agite4381@gmail.com">✉ agite4381@gmail.com</a>
           <a href="tel:+918329549122">☎ +91 83295 49122</a>
+        </div>
+        <div class="social-row">
+          <a class="social-btn" href="https://github.com/engg-adi" target="_blank" rel="noopener">GitHub ↗</a>
+          <a class="social-btn" href="https://www.linkedin.com/in/aditya-gite-2402a827/" target="_blank" rel="noopener">LinkedIn ↗</a>
         </div>
       </div>
 
@@ -93,38 +97,53 @@
       <div class="section-label">03 / PROJECTS</div>
       <div class="content">
         <h2>Ideas turned into <span>projects.</span></h2>
+        <div class="project-showcase-banner">
+          <img src="assets/projects-showcase.png" alt="Aditya Gite featured projects showcase" loading="lazy">
+        </div>
+        <div class="project-filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="data">Data Science</button>
+          <button class="filter-btn" data-filter="ai">AI / ML</button>
+          <button class="filter-btn" data-filter="app">Applications</button>
+        </div>
         <div class="project-grid">
-          <article class="project-card featured">
+          <article class="project-card data-category="data" featured">
+            <div class="project-preview"><img src="assets/sales-analysis.png" alt="Sales Analysis project preview" loading="lazy"></div>
             <div class="project-number">01</div><div class="project-tag">DATA SCIENCE</div>
             <h3>Sales Data Analysis</h3>
             <p>Analyzed sales data with Python, Pandas and Matplotlib to discover sales trends, top-selling products and regional performance, supporting better business decisions.</p>
             <div class="project-tech"><span>Python</span><span>Pandas</span><span>Matplotlib</span></div>
           </article>
-          <article class="project-card">
+          <article class="project-card data-category="ai"">
+            <div class="project-preview"><img src="assets/veterinary-diagnosis.png" alt="Veterinary Diagnosis project preview" loading="lazy"></div>
             <div class="project-number">02</div><div class="project-tag">AI / ML</div>
             <h3>AI in Veterinary Diagnosis</h3>
             <p>An AI-focused concept for assisting veterinary diagnosis by applying machine learning to animal-health data and supporting faster, data-driven decisions.</p>
             <div class="project-tech"><span>AI</span><span>ML</span><span>Data Science</span></div>
           </article>
-          <article class="project-card">
+          <article class="project-card data-category="app"">
+            <div class="project-preview"><img src="assets/assignment-grading.png" alt="Assignment Grading project preview" loading="lazy"></div>
             <div class="project-number">03</div><div class="project-tag">AUTOMATION</div>
             <h3>Automated Assignment Grading</h3>
             <p>A Python-based system concept for evaluating student assignments using text processing, similarity analysis and automated grading support.</p>
             <div class="project-tech"><span>Python</span><span>NLP</span><span>Flask</span></div>
           </article>
-          <article class="project-card">
+          <article class="project-card data-category="ai"">
+            <div class="project-preview"><img src="assets/yolo-detection.png" alt="Yolo Detection project preview" loading="lazy"></div>
             <div class="project-number">04</div><div class="project-tag">COMPUTER VISION</div>
             <h3>YOLO Object Detection</h3>
             <p>Computer-vision experiments using YOLO to detect objects in images and video, including person detection and object counting.</p>
             <div class="project-tech"><span>YOLO</span><span>Python</span><span>OpenCV</span></div>
           </article>
-          <article class="project-card featured">
+          <article class="project-card data-category="data" featured">
+            <div class="project-preview"><img src="assets/retail-intelligence.png" alt="Retail Intelligence project preview" loading="lazy"></div>
             <div class="project-number">05</div><div class="project-tag">RETAIL INTELLIGENCE</div>
             <h3>Enterprise Retail Intelligence Platform</h3>
             <p>A data-driven platform concept for enterprise retail analytics, combining sales intelligence, customer buying patterns, product performance and regional insights to help businesses make smarter decisions.</p>
             <div class="project-tech"><span>AI</span><span>Data Analytics</span><span>Retail</span></div>
           </article>
-          <article class="project-card">
+          <article class="project-card data-category="app"">
+            <div class="project-preview"><img src="assets/employee-management.png" alt="Employee Management project preview" loading="lazy"></div>
             <div class="project-number">06</div><div class="project-tag">PYTHON</div>
             <h3>Employee Management System</h3>
             <p>Python application for managing employee records using file handling and exception handling.</p>
@@ -194,10 +213,24 @@
       </div>
     </section>
 
+
+    <section id="highlights" class="section">
+      <div class="section-label">07 / HIGHLIGHTS</div>
+      <div class="content">
+        <h2>What I bring to a <span>team.</span></h2>
+        <div class="highlight-grid">
+          <div class="highlight-card"><b>01</b><h3>Problem Solver</h3><p>I enjoy turning practical problems into clear, data-driven solutions.</p></div>
+          <div class="highlight-card"><b>02</b><h3>Quick Learner</h3><p>Curious about new technologies and comfortable learning by building.</p></div>
+          <div class="highlight-card"><b>03</b><h3>Project Focused</h3><p>I like turning AI, ML and analytics concepts into working projects.</p></div>
+          <div class="highlight-card"><b>04</b><h3>Adaptable</h3><p>Ready to collaborate, learn from feedback and adapt to new environments.</p></div>
+        </div>
+      </div>
+    </section>
+
     <section id="contact" class="contact section">
       <div class="contact-inner">
         <div>
-          <div class="section-label">07 / CONTACT</div>
+          <div class="section-label">08 / CONTACT</div>
           <h2>Let's build something <span>meaningful.</span></h2>
           <p>I'm open to internships, entry-level opportunities, projects and conversations around AI, Data Science and technology.</p>
         </div>
@@ -209,6 +242,7 @@
         </div>
       </div>
     </section>
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
   </main>
 
   <footer>
