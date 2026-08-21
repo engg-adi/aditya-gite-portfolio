@@ -24,3 +24,15 @@ document.querySelectorAll('.filter-btn').forEach(btn=>btn.addEventListener('clic
 const toggle=document.getElementById('themeToggle');if(localStorage.getItem('aditya-theme')==='light')document.body.classList.add('light');
 function updateIcon(){if(toggle)toggle.textContent=document.body.classList.contains('light')?'☾':'☼'}updateIcon();
 toggle?.addEventListener('click',()=>{document.body.classList.toggle('light');localStorage.setItem('aditya-theme',document.body.classList.contains('light')?'light':'dark');updateIcon()});
+
+
+// AI portfolio agent
+const agent=document.getElementById('aiAgent'),launch=document.getElementById('agentLaunch'),closeAgent=document.getElementById('agentClose'),form=document.getElementById('agentForm'),input=document.getElementById('agentInput'),messages=document.getElementById('agentMessages');
+let chatHistory=[];
+function openAgent(){agent?.classList.add('open');agent?.setAttribute('aria-hidden','false');setTimeout(()=>input?.focus(),150)}
+function closeAgentFn(){agent?.classList.remove('open');agent?.setAttribute('aria-hidden','true')}
+launch?.addEventListener('click',openAgent);closeAgent?.addEventListener('click',closeAgentFn);agent?.addEventListener('click',e=>{if(e.target===agent)closeAgentFn()});
+function addMessage(text,type){const el=document.createElement('div');el.className='agent-message '+type;el.textContent=text;messages.appendChild(el);messages.scrollTop=messages.scrollHeight;return el}
+async function askAgent(text){addMessage(text,'user');chatHistory.push({role:'user',content:text});const loading=addMessage('Thinking…','bot');try{const r=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:chatHistory})});const data=await r.json();loading.remove();if(!r.ok)throw new Error(data.error||'Agent unavailable');addMessage(data.reply,'bot');chatHistory.push({role:'assistant',content:data.reply})}catch(err){loading.remove();addMessage('The AI agent is not connected yet. Add OPENAI_API_KEY in Vercel Project Settings → Environment Variables, then redeploy.','bot')}}
+form?.addEventListener('submit',e=>{e.preventDefault();const text=input.value.trim();if(!text)return;input.value='';askAgent(text)});
+document.querySelectorAll('.agent-suggestions button').forEach(b=>b.addEventListener('click',()=>askAgent(b.dataset.prompt)));

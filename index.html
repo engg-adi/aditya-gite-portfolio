@@ -24,7 +24,7 @@
       <a href="#education">Education</a>
       <a href="#contact">Contact</a>
     </nav>
-    <div class="nav-actions"><button class="theme-btn" id="themeToggle" aria-label="Toggle theme">☼</button><a class="nav-resume" href="Aditya_Gite_Resume.pdf" target="_blank">Resume ↗</a></div>
+    <div class="nav-actions"><button class="theme-btn" id="themeToggle" aria-label="Toggle theme">☼</button><a class="nav-resume" href="Aditya_Gite_Resume.pdf" target="_blank">Resume ↗</a></div><button class="agent-launch" id="agentLaunch" aria-label="Open Aditya AI Agent">✦ AI Agent</button>
   </header>
 
   <main>
@@ -107,7 +107,7 @@
           <button class="filter-btn" data-filter="app">Applications</button>
         </div>
         <div class="project-grid">
-          <article class="project-card data-category="data" featured">
+          <article class="project-card featured" data-category="data">
             <div class="project-preview"><img src="assets/sales-analysis.png" alt="Sales Analysis project preview" loading="lazy"></div>
             <div class="project-number">01</div><div class="project-tag">DATA SCIENCE</div>
             <h3>Sales Data Analysis</h3>
@@ -135,7 +135,7 @@
             <p>Computer-vision experiments using YOLO to detect objects in images and video, including person detection and object counting.</p>
             <div class="project-tech"><span>YOLO</span><span>Python</span><span>OpenCV</span></div>
           </article>
-          <article class="project-card data-category="data" featured">
+          <article class="project-card featured" data-category="data">
             <div class="project-preview"><img src="assets/retail-intelligence.png" alt="Retail Intelligence project preview" loading="lazy"></div>
             <div class="project-number">05</div><div class="project-tag">RETAIL INTELLIGENCE</div>
             <h3>Enterprise Retail Intelligence Platform</h3>
@@ -251,5 +251,7 @@
   </footer>
 
   <script src="script.js"></script>
+
+<div class="ai-agent" id="aiAgent" aria-hidden="true"><div class="ai-agent-panel"><div class="ai-agent-head"><div class="ai-agent-avatar">✦</div><div><strong>Aditya AI Agent</strong><small>Ask about skills, projects & resume</small></div><button id="agentClose" class="agent-close" aria-label="Close AI Agent">×</button></div><div class="ai-agent-messages" id="agentMessages"><div class="agent-message bot">Hi! 👋 I’m Aditya’s AI portfolio assistant. Ask me about his projects, skills, education, internship, certifications, or contact details.</div></div><div class="agent-suggestions"><button data-prompt="What projects has Aditya built?">Projects</button><button data-prompt="What are Aditya's technical skills?">Skills</button><button data-prompt="Tell me about Aditya's internship experience.">Internship</button><button data-prompt="How can I contact Aditya?">Contact</button></div><form class="agent-form" id="agentForm"><input id="agentInput" autocomplete="off" placeholder="Ask me anything..." aria-label="Ask Aditya AI Agent"><button type="submit" aria-label="Send message">➤</button></form><div class="agent-note">AI answers are based on Aditya’s portfolio information.</div></div></div>
 </body>
 </html>
